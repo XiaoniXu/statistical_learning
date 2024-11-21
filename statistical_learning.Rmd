@@ -95,3 +95,37 @@ lasso_cv %>%
 ```
 
 
+## Cluster Pokemons
+
+```{r}
+pokemon_df = 
+  read_csv("data/pokemon.csv") %>% 
+  janitor::clean_names() %>% 
+  select(hp, speed)
+```
+
+```{r}
+pokemon_df %>% 
+  ggplot(aes(x = hp, y = speed)) +
+  geom_point()
+```
+
+Let's use `kmeans` to cluster these pokemon
+
+```{r}
+kmeans_fit =
+  kmeans(x = pokemon_df, centers = 3)
+```
+
+Can I plot those results
+```{r}
+pokemon_df = 
+  broom::augment(kmeans_fit, pokemon_df)
+
+pokemon_df %>% 
+  ggplot(aes(x = hp, y = speed, color = .cluster)) +
+  geom_point()
+```
+
+
+
