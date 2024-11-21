@@ -1,0 +1,21 @@
+---
+title: "Statistical Learning"
+author: "Xiaoni Xu"
+date: "2024-11-21"
+output: html_document
+---
+
+Loading key packages
+```{r, message=FALSE}
+library(tidyverse)
+library(glmnet)
+```
+
+## Try lasso
+
+Import and clean birthweight data
+
+```{r}
+
+```
+
